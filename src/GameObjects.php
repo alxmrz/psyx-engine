@@ -2,6 +2,7 @@
 
 namespace PsyXEngine;
 
+use Closure;
 use SplObjectStorage;
 
 class GameObjects extends SplObjectStorage
@@ -45,5 +46,18 @@ class GameObjects extends SplObjectStorage
                 $checkPairs["{$gameObject1->getId()}:{$gameObject->getId()}"] = 1;
             }
         }
+    }
+
+    public function filter(Closure $filter): GameObjects
+    {
+        $result = new GameObjects();
+
+        foreach ($this as $gameObject) {
+            if ($filter($gameObject)) {
+                $result->attach($gameObject);
+            }
+        }
+
+        return $result;
     }
 }
