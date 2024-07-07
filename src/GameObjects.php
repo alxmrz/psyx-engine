@@ -31,24 +31,25 @@ class GameObjects extends \ArrayObject
             if ($event instanceof KeyPressedEvent) {
                 $gameObject->onButtonPressed($event, $this);
             }
+
             $mouseCollision = $event instanceof ClickEvent
                 ? new Collision($event->coords[0], $event->coords[1], 1, 1)
                 : null;
+            if ($mouseCollision && $gameObject->isCollidable()
+                && $gameObject->getCollision()->isCollidedWith($mouseCollision)) {
+                $gameObject->onClick($event);
+            }
 
+            if (!$gameObject->isMovable()) {
+                continue;
+            }
 
             foreach ($this as $gameObject1) {
                 if ($gameObject === $gameObject1) {
                     continue;
                 }
 
-                if ($mouseCollision && $gameObject->isCollidable()
-                    && $gameObject->getCollision()->isCollidedWith($mouseCollision)) {
-                    $gameObject->onClick($event);
-                }
 
-                if (!$gameObject->isMovable()) {
-                    continue;
-                }
 
                 if (isset($checkPairs["{$gameObject->getId()}:{$gameObject1->getId()}"])
                     || isset($checkPairs["{$gameObject1->getId()}:{$gameObject->getId()}"])
