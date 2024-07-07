@@ -10,7 +10,7 @@ class Image extends RenderType
 {
     private string $imagePath;
     private SDLRect $rect;
-    private SDLRect $source;
+    private ?SDLRect $source;
     private float $angle;
     private ?SDLPoint $center;
     private SDLRendererFlip $flip;
