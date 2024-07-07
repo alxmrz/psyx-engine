@@ -64,7 +64,7 @@ class GameObjects extends \ArrayObject
 
         foreach ($this as $gameObject) {
             if ($filter($gameObject)) {
-                $result->attach($gameObject);
+                $result->add($gameObject);
             }
         }
 
