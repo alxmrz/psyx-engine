@@ -1,6 +1,6 @@
 <?php
 
-namespace PXEngine;
+namespace PsyXEngine;
 
 use SDL2\SDLPoint;
 use SDL2\SDLRect;

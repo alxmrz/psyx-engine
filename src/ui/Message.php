@@ -1,8 +1,8 @@
 <?php
 
-namespace PXEngine\ui;
+namespace PsyXEngine\ui;
 
-use PXEngine\Text;
+use PsyXEngine\Text;
 use SDL2\SDLColor;
 use SDL2\SDLRect;
 

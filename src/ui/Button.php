@@ -1,11 +1,11 @@
 <?php
 
-namespace PXEngine\ui;
+namespace PsyXEngine\ui;
 
 use Closure;
-use PXEngine\ClickEvent;
-use PXEngine\Collision;
-use PXEngine\Text;
+use PsyXEngine\ClickEvent;
+use PsyXEngine\Collision;
+use PsyXEngine\Text;
 use SDL2\SDLColor;
 use SDL2\SDLRect;
 

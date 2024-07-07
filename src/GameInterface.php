@@ -1,6 +1,6 @@
 <?php
 
-namespace PXEngine;
+namespace PsyXEngine;
 
 interface GameInterface
 {

@@ -1,9 +1,9 @@
 <?php
 
-use PXEngine\Engine;
-use PXEngine\Event;
-use PXEngine\GameInterface;
-use PXEngine\GameObjects;
+use PsyXEngine\Engine;
+use PsyXEngine\Event;
+use PsyXEngine\GameInterface;
+use PsyXEngine\GameObjects;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 

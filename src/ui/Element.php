@@ -1,8 +1,8 @@
 <?php
 
-namespace PXEngine\ui;
+namespace PsyXEngine\ui;
 
-use PXEngine\GameObject;
+use PsyXEngine\GameObject;
 
 class Element extends GameObject
 {

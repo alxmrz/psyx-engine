@@ -1,6 +1,6 @@
 <?php
 
-namespace PXEngine;
+namespace PsyXEngine;
 
 use SDL2\LibSDL2;
 use SDL2\LibSDL2Image;

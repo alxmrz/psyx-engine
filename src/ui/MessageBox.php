@@ -1,6 +1,6 @@
 <?php
 
-namespace PXEngine\ui;
+namespace PsyXEngine\ui;
 
 use SDL2\SDLColor;
 use SDL2\SDLRect;

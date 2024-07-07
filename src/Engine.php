@@ -1,9 +1,9 @@
 <?php
 
-namespace PXEngine;
+namespace PsyXEngine;
 
-use PXEngine\ui\Message;
-use PXEngine\ui\MessageBox;
+use PsyXEngine\ui\Message;
+use PsyXEngine\ui\MessageBox;
 use SDL2\KeyCodes;
 use SDL2\LibSDL2;
 use SDL2\LibSDL2Image;

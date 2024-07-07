@@ -1,9 +1,9 @@
 <?php
 
-namespace PXEngine\ui;
+namespace PsyXEngine\ui;
 
-use PXEngine\Renderer;
-use PXEngine\RenderType;
+use PsyXEngine\Renderer;
+use PsyXEngine\RenderType;
 use SDL2\SDLColor;
 use SDL2\SDLRect;
 
