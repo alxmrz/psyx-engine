@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7f310f588c7acf4e63f42083c4c9f199",
+    "content-hash": "61ba3fe54bfcd2329b1ee62257f78294",
     "packages": [
         {
             "name": "alxmrz/php-sdl2",
