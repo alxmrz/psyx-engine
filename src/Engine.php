@@ -161,20 +161,20 @@ class Engine
      */
     public function createDebugInfo(): void
     {
-        $this->gameObjects->attach(
+        $this->gameObjects->add(
             new MessageBox(
                 new SDLRect(550, 100, 335, 100),
                 new SDLColor(0, 0, 0, 0)
             )
         );
-        $this->gameObjects->attach(
+        $this->gameObjects->add(
             $this->fpmMessage = new Message(
                 'FPS: ',
                 new SDLRect(550, 100, 300, 100),
                 new SDLColor(255, 0, 0, 0)
             )
         );
-        $this->gameObjects->attach(
+        $this->gameObjects->add(
             $this->loopTimeMessage = new Message(
                 'Loop time: ',
                 new SDLRect(550, 250, 300, 50),
@@ -182,7 +182,7 @@ class Engine
             )
         );
 
-        $this->gameObjects->attach(
+        $this->gameObjects->add(
             $this->objectsCountMessage = new Message(
                 'Objects in game: ',
                 new SDLRect(550, 350, 300, 50),
