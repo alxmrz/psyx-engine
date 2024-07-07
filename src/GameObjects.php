@@ -5,17 +5,27 @@ namespace PsyXEngine;
 use Closure;
 use SplObjectStorage;
 
-class GameObjects extends SplObjectStorage
+class GameObjects extends \ArrayObject
 {
+    public function add(GameObject $object): void
+    {
+        $this->append($object);
+    }
+
+    public function deleteAtIndex(mixed $index): void
+    {
+        $this->offsetUnset($index);
+    }
+
     public function update(Event $event = null): void
     {
         $checkPairs = [];
         /** @var GameObject $gameObject */
-        foreach ($this as $gameObject) {
+        foreach ($this as  $key => $gameObject) {
             $gameObject->update();
 
             if ($gameObject->needDestroy()) {
-                $this->detach($gameObject);
+                $this->deleteAtIndex($key);
             }
 
             if ($event instanceof KeyPressedEvent) {
