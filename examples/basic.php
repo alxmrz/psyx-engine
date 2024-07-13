@@ -16,7 +16,7 @@ $game = new class implements GameInterface {
 
 $engine = new Engine();
 
-$engine->setWindowTitle('PHPacman');
+$engine->setWindowTitle('Basic');
 $engine->setWindowWidth(900);
 $engine->setWindowHeight(600);
 $engine->displayDebugInfo();

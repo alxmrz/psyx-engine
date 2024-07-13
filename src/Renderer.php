@@ -5,6 +5,7 @@ namespace PsyXEngine;
 use SDL2\LibSDL2;
 use SDL2\LibSDL2Image;
 use SDL2\LibSDL2TTF;
+use SDL2\PixelBuffer;
 use SDL2\SDLColor;
 use SDL2\SDLPoint;
 use SDL2\SDLRect;
@@ -19,6 +20,8 @@ class Renderer
     private LibSDL2TTF $ttf;
     private array $fonts = [];
     private LibSDL2Image $imager;
+
+    public ?PixelBuffer $pixBuffer = null;
 
     public function __construct(Window $window, LibSdl2 $sdl, LibSDL2TTF $ttf, LibSDL2Image $imager)
     {
@@ -61,11 +64,29 @@ class Renderer
             exit();
         }
 
-        $this->renderScene();
+        //TODO: separate pixel buffer Rendering from GameObject rendering
+        if ($this->pixBuffer) {
+            $SDL_PIXELFORMAT_ARGB8888 = 372645892;
+            $SDL_TEXTUREACCESS_STATIC = 0;
 
-        $this->renderGameObjects($gameObjects);
+            $texture = $this->sdl->SDL_CreateTexture(
+                $this->renderer,
+                $SDL_PIXELFORMAT_ARGB8888,
+                $SDL_TEXTUREACCESS_STATIC,
+                $this->window->getWidth(),
+                $this->window->getHeight()
+            );
 
-        $this->sdl->SDL_RenderPresent($this->renderer);
+            $this->sdl->SDL_UpdateTexture($texture, null, $this->pixBuffer, $this->window->getWidth() * 4);
+            $this->sdl->SDL_RenderCopy($this->renderer, $texture->getSdlTexture(), NULL, NULL);
+            $this->sdl->SDL_RenderPresent($this->renderer);
+            $this->sdl->SDL_DestroyTexture($texture->getSdlTexture());
+
+        } else {
+            $this->renderScene();
+            $this->renderGameObjects($gameObjects);
+            $this->sdl->SDL_RenderPresent($this->renderer);
+        }
     }
 
     /**

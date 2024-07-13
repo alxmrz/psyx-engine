@@ -9,6 +9,7 @@ use SDL2\LibSDL2;
 use SDL2\LibSDL2Image;
 use SDL2\LibSDL2Mixer;
 use SDL2\LibSDL2TTF;
+use SDL2\PixelBuffer;
 use SDL2\SDLColor;
 use SDL2\SDLEvent;
 use SDL2\SDLRect;
@@ -21,6 +22,7 @@ class Engine
     private int $windowStartY = 50;
     private int $windowWidth = 100;
     private int $windowHeight = 100;
+    public static ?PixelBuffer $pixBuff = null;
 
     private bool $needDisplayDebugInfo = false;
 
@@ -74,6 +76,8 @@ class Engine
         }
 
         while ($this->isRunning) {
+            $this->renderer->pixBuffer = self::$pixBuff;
+
             $start = microtime(true);
 
             $this->handleEvents();
@@ -91,6 +95,11 @@ class Engine
                 $this->fpmMessage->changeText('Framerate: ' . round(1000 / ($timeElapsed + self::LOOP_DELAY), 0, PHP_ROUND_HALF_DOWN));
                 $this->loopTimeMessage->changeText('Upd/draw time (ms): ' . $timeElapsed);
                 $this->objectsCountMessage->changeText('Objects in game: ' . $this->gameObjects->count());
+
+                echo 'Framerate: ' . round(1000 / ($timeElapsed + self::LOOP_DELAY)) . PHP_EOL;
+                echo 'Upd/draw time (ms): ' . $timeElapsed . PHP_EOL;
+                echo 'Objects in game: ' . $this->gameObjects->count() . PHP_EOL;
+                echo '------------------------' . PHP_EOL;
             }
         }
 
