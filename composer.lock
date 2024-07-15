@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/alxmrz/php-sdl2.git",
-                "reference": "3e6e8237776991ae342320293ba4c03782d2206e"
+                "reference": "64713857d9dc8907c2bec4e0c14989ea0ea33c9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alxmrz/php-sdl2/zipball/3e6e8237776991ae342320293ba4c03782d2206e",
-                "reference": "3e6e8237776991ae342320293ba4c03782d2206e",
+                "url": "https://api.github.com/repos/alxmrz/php-sdl2/zipball/64713857d9dc8907c2bec4e0c14989ea0ea33c9f",
+                "reference": "64713857d9dc8907c2bec4e0c14989ea0ea33c9f",
                 "shasum": ""
             },
             "require-dev": {
@@ -44,7 +44,7 @@
                 "source": "https://github.com/alxmrz/php-sdl2/tree/main",
                 "issues": "https://github.com/alxmrz/php-sdl2/issues"
             },
-            "time": "2024-07-13T11:30:06+00:00"
+            "time": "2024-07-15T20:03:17+00:00"
         }
     ],
     "packages-dev": [
@@ -682,12 +682,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "49d7820565836236411f5dc002d16dd689cde42f"
+                "reference": "8fa46049e400071fb315578c20cdf8c171ce1d6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/49d7820565836236411f5dc002d16dd689cde42f",
-                "reference": "49d7820565836236411f5dc002d16dd689cde42f",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/8fa46049e400071fb315578c20cdf8c171ce1d6c",
+                "reference": "8fa46049e400071fb315578c20cdf8c171ce1d6c",
                 "shasum": ""
             },
             "require": {
@@ -777,7 +777,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-10T11:45:39+00:00"
+            "time": "2024-07-15T06:55:41+00:00"
         },
         {
             "name": "sebastian/cli-parser",

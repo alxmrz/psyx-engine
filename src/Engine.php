@@ -22,8 +22,6 @@ class Engine
     private int $windowStartY = 50;
     private int $windowWidth = 100;
     private int $windowHeight = 100;
-    public static ?PixelBuffer $pixBuff = null;
-
     private bool $needDisplayDebugInfo = false;
 
     private LibSDL2 $sdl;
@@ -76,8 +74,6 @@ class Engine
         }
 
         while ($this->isRunning) {
-            $this->renderer->pixBuffer = self::$pixBuff;
-
             $start = microtime(true);
 
             $this->handleEvents();

@@ -11,6 +11,7 @@ use SDL2\SDLPoint;
 use SDL2\SDLRect;
 use SDL2\SDLRenderer;
 use SDL2\SDLRendererFlip;
+use SDL2\SDLTexture;
 
 class Renderer
 {
@@ -19,6 +20,11 @@ class Renderer
     private SDLRenderer $renderer;
     private LibSDL2TTF $ttf;
     private array $fonts = [];
+
+    /**
+     * @var SDLTexture[]
+     */
+    private array $textures = [];
     private LibSDL2Image $imager;
 
     public ?PixelBuffer $pixBuffer = null;
@@ -64,29 +70,9 @@ class Renderer
             exit();
         }
 
-        //TODO: separate pixel buffer Rendering from GameObject rendering
-        if ($this->pixBuffer) {
-            $SDL_PIXELFORMAT_ARGB8888 = 372645892;
-            $SDL_TEXTUREACCESS_STATIC = 0;
-
-            $texture = $this->sdl->SDL_CreateTexture(
-                $this->renderer,
-                $SDL_PIXELFORMAT_ARGB8888,
-                $SDL_TEXTUREACCESS_STATIC,
-                $this->window->getWidth(),
-                $this->window->getHeight()
-            );
-
-            $this->sdl->SDL_UpdateTexture($texture, null, $this->pixBuffer, $this->window->getWidth() * 4);
-            $this->sdl->SDL_RenderCopy($this->renderer, $texture->getSdlTexture(), NULL, NULL);
-            $this->sdl->SDL_RenderPresent($this->renderer);
-            $this->sdl->SDL_DestroyTexture($texture->getSdlTexture());
-
-        } else {
-            $this->renderScene();
-            $this->renderGameObjects($gameObjects);
-            $this->sdl->SDL_RenderPresent($this->renderer);
-        }
+        $this->renderScene();
+        $this->renderGameObjects($gameObjects);
+        $this->sdl->SDL_RenderPresent($this->renderer);
     }
 
     /**
@@ -132,6 +118,32 @@ class Renderer
             $this->window->close();
         }
     }
+
+    public function createEmptyTexture(int $width, int $height): SDLTexture
+    {
+        $SDL_PIXELFORMAT_ARGB8888 = 372645892;
+            $SDL_TEXTUREACCESS_STATIC = 0;
+
+        return $this->sdl->SDL_CreateTexture(
+            $this->renderer,
+            $SDL_PIXELFORMAT_ARGB8888,
+            $SDL_TEXTUREACCESS_STATIC,
+            $width,
+            $height
+        );
+    }
+
+    public function updateTexture(SDLTexture $texture, PixelBuffer $pixelBuffer, int $width): void
+    {
+        $this->sdl->SDL_UpdateTexture($texture, null, $pixelBuffer, $width * 4);
+        $this->sdl->SDL_RenderCopy($this->renderer, $texture->getSdlTexture(), NULL, NULL);
+    }
+
+    public function destroyTexture(SDLTexture $texture): void
+    {
+        $this->sdl->SDL_DestroyTexture($texture->getSdlTexture());
+    }
+
 
     public function displayText(int $x, int $y, int $width, int $height, SDLColor $color, string $text, int $size = 24): void
     {
