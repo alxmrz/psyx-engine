@@ -76,3 +76,4 @@ Tested under Linux only.
 Projects made with the engine:
 - https://github.com/alxmrz/deminer - a clone of Minesweeper
 - https://github.com/alxmrz/phpacman - a clone of Pac-man 
+- https://github.com/alxmrz/theroom - demo of semi-3d abilities of the engine
