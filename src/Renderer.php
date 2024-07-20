@@ -133,10 +133,10 @@ class Renderer
         );
     }
 
-    public function updateTexture(SDLTexture $texture, PixelBuffer $pixelBuffer, int $width): void
+    public function updateTexture(SDLTexture $texture, PixelBuffer $pixelBuffer, int $width, ?SDLRect $destRect = null): void
     {
         $this->sdl->SDL_UpdateTexture($texture, null, $pixelBuffer, $width * 4);
-        $this->sdl->SDL_RenderCopy($this->renderer, $texture->getSdlTexture(), NULL, NULL);
+        $this->sdl->SDL_RenderCopy($this->renderer, $texture->getSdlTexture(), NULL, $destRect);
     }
 
     public function destroyTexture(SDLTexture $texture): void
