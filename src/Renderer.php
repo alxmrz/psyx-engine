@@ -222,6 +222,10 @@ class Renderer
 
             exit();
         }
+
+        $this->sdl->SDL_DestroyTexture($textureMessage);
+        $this->sdl->SDL_FreeSurface($image);
+        
     }
 
     private function getFont(string $path, int $size): object
